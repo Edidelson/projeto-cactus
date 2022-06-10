@@ -1,0 +1,43 @@
+<databaseChangeLog
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="autoIncrement" value="true"/>
+    <changeSet author="admin" id="1">
+
+        <createTable tableName="cliente">
+            <column name="email" type="VARCHAR(255)"/>
+        </createTable>
+
+        <createTable tableName="endereco_cliente">
+            <column name="id" type="int(11)" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email_cliente" type="VARCHAR(255)"/>
+            <column name="logradouro" type="VARCHAR(255)"/>
+            <column name="numero" type="VARCHAR(255)"/>
+            <column name="bairro" type="VARCHAR(255)"/>
+            <column name="cidade" type="VARCHAR(255)"/>
+            <column name="estado" type="VARCHAR(255)"/>
+            <column name="cep" type="VARCHAR(255)"/>
+        </createTable>
+
+        <addPrimaryKey columnNames="email" tableName="cliente"/>
+
+        <addForeignKeyConstraint baseColumnNames="email_cliente"
+                                 baseTableName="endereco_cliente"
+                                 constraintName="fk_cliente"
+                                 referencedColumnNames="email"
+                                 referencedTableName="cliente"/>
+        <rollback>
+            <dropTable tableName="cliente"/>
+        </rollback>
+        <rollback>
+            <dropTable tableName="endereco_cliente"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
