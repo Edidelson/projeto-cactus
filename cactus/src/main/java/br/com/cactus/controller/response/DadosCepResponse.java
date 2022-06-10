@@ -1,8 +1,9 @@
 package br.com.cactus.controller.response;
 
+import lombok.Builder;
 import lombok.Data;
 
-@Data
+@Data @Builder
 public class DadosCepResponse {
 
     private String cep;

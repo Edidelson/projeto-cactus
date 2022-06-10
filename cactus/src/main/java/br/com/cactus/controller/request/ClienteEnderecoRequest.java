@@ -2,12 +2,13 @@ package br.com.cactus.controller.request;
 
 import br.com.cactus.domain.Cliente;
 import br.com.cactus.domain.EnderecoCliente;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Data
+@Data @Builder
 public class ClienteEnderecoRequest {
 
     @NotNull @NotEmpty

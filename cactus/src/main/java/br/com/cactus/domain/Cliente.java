@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Builder
 @AllArgsConstructor
@@ -38,4 +39,17 @@ public class Cliente implements Serializable {
      public List<EnderecoCliente> getRespostas() {
          return respostas;
      }
- }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cliente)) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(email, cliente.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
+    }
+}

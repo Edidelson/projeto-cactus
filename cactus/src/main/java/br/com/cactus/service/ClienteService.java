@@ -3,7 +3,7 @@ package br.com.cactus.service;
 import br.com.cactus.controller.request.ClienteEnderecoRequest;
 import br.com.cactus.controller.request.ClienteRequest;
 import br.com.cactus.controller.response.ClienteResponse;
-import br.com.cactus.controller.response.EnderecoClienteResponse;
+import br.com.cactus.controller.response.ClienteEnderecoResponse;
 import br.com.cactus.domain.Cliente;
 import br.com.cactus.domain.EnderecoCliente;
 import br.com.cactus.repository.ClienteEnderecoRepository;
@@ -21,18 +21,19 @@ public class ClienteService {
     private ClienteEnderecoRepository enderecoClienteRepository;
     private ClienteRepository clienteRepository;
 
-    public EnderecoClienteResponse cadastrarEndereco(String email, ClienteEnderecoRequest clienteEnderecoRequest) {
+    public ClienteEnderecoResponse cadastrarEndereco(String email, ClienteEnderecoRequest clienteEnderecoRequest) {
         Cliente cliente = clienteRepository.findByEmail(email);
         if(cliente==null){
             throw new IllegalArgumentException("Cliente inexistente");
         }
         EnderecoCliente enderecoCliente = clienteEnderecoRequest.converter(cliente);
+        ClienteEnderecoResponse clienteEnderecoResponse = getEnderecoClienteResponse(enderecoCliente);
         enderecoClienteRepository.save(enderecoCliente);
-        return getEnderecoClienteResponse(enderecoCliente);
+        return clienteEnderecoResponse;
     }
 
-    private EnderecoClienteResponse getEnderecoClienteResponse(EnderecoCliente enderecoCliente) {
-        return EnderecoClienteResponse
+    private ClienteEnderecoResponse getEnderecoClienteResponse(EnderecoCliente enderecoCliente) {
+        return ClienteEnderecoResponse
             .builder()
             .email(enderecoCliente.getCliente().getEmail())
             .logradouro(enderecoCliente.getLogradouro())
@@ -43,7 +44,7 @@ public class ClienteService {
             .bairro(enderecoCliente.getBairro()).build();
     }
 
-    public List<EnderecoClienteResponse> buscarEnderecoPorCliente(String email){
+    public List<ClienteEnderecoResponse> buscarEnderecoPorCliente(String email){
         return enderecoClienteRepository
                 .findByClienteEmail(email)
                 .stream()
