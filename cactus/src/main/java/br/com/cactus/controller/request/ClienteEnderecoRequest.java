@@ -1,14 +1,14 @@
-package br.com.cactus.controller.form;
+package br.com.cactus.controller.request;
 
-import br.com.cactus.modelo.Cliente;
-import br.com.cactus.modelo.EnderecoCliente;
+import br.com.cactus.domain.Cliente;
+import br.com.cactus.domain.EnderecoCliente;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class EnderecoClienteForm {
+public class ClienteEnderecoRequest {
 
     @NotNull @NotEmpty
     private String logradouro;
@@ -24,7 +24,7 @@ public class EnderecoClienteForm {
     private String cep;
 
     public EnderecoCliente converter(Cliente cliente) {
-        return new EnderecoCliente()
+        return EnderecoCliente
                 .builder()
                 .cliente(cliente)
                 .logradouro(this.logradouro)

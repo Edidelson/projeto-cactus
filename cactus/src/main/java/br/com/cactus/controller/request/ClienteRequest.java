@@ -1,19 +1,19 @@
-package br.com.cactus.controller.form;
+package br.com.cactus.controller.request;
 
-import br.com.cactus.modelo.Cliente;
+import br.com.cactus.domain.Cliente;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class ClienteForm {
+public class ClienteRequest {
 
     @NotNull
     @NotEmpty
     private String email;
 
     public Cliente converter() {
-        return new Cliente().builder().email(this.email).build();
+        return Cliente.builder().email(this.email).build();
     }
 }

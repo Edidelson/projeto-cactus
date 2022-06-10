@@ -1,26 +1,19 @@
 package br.com.cactus.exception;
 
-public class CepException extends Exception {
+public class CepException extends RuntimeException {
 
-    private Integer codigoErro;
     private String mensagemErro;
 
-    public CepException(String mensagemErro) {
-        super();
+    public CepException(Throwable cause, String mensagemErro) {
+        super(mensagemErro, cause);
         this.mensagemErro = mensagemErro;
     }
 
-    public CepException(Integer codigoErro, String mensagemErro) {
-        super();
-        this.codigoErro = codigoErro;
+    public CepException(String mensagemErro) {
         this.mensagemErro = mensagemErro;
     }
 
     public String getMensagemErro() {
         return mensagemErro;
-    }
-
-    public Integer getCodigoErro() {
-        return codigoErro;
     }
 }

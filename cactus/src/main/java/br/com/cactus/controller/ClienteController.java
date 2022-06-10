@@ -1,10 +1,9 @@
 package br.com.cactus.controller;
 
-import br.com.cactus.controller.dto.ClienteDTO;
-import br.com.cactus.controller.form.ClienteForm;
-import br.com.cactus.modelo.Cliente;
-import br.com.cactus.repository.ClienteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.cactus.controller.request.ClienteRequest;
+import br.com.cactus.controller.response.ClienteResponse;
+import br.com.cactus.service.ClienteService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,17 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+@AllArgsConstructor
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/clientes")
 public class ClienteController {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteService clienteService;
 
     @PostMapping
-    public ResponseEntity<ClienteDTO> cadastrarCliente(@RequestBody @Valid ClienteForm form){
-        Cliente cliente = form.converter();
-        clienteRepository.save(cliente);
-        return ResponseEntity.ok(new ClienteDTO(cliente));
+    public ResponseEntity<ClienteResponse> cadastrarCliente(@RequestBody @Valid ClienteRequest clienteRequest){
+        return ResponseEntity.ok(clienteService.cadastrarCliente(clienteRequest));
     }
 }

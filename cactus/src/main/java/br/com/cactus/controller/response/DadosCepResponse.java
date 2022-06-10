@@ -1,9 +1,9 @@
-package br.com.cactus.controller.dto;
+package br.com.cactus.controller.response;
 
 import lombok.Data;
 
 @Data
-public class DadosCepDTO {
+public class DadosCepResponse {
 
     private String cep;
     private String logradouro;
