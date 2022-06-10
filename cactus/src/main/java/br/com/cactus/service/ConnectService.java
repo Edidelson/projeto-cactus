@@ -1,6 +1,7 @@
 package br.com.cactus.service;
 
 import br.com.cactus.config.Constants;
+import org.springframework.stereotype.Service;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -11,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Objects;
 
-
+@Service
 public class ConnectService {
 
     private ConnectService(){}
