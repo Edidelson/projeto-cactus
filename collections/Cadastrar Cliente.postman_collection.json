@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "540a428d-1d62-4d6b-a226-ace5a583330f",
+		"name": "Cadastrar Cliente",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17988198"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/clientes/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"carlos@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/clientes/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

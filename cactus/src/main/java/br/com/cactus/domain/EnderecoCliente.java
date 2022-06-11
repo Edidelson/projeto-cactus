@@ -18,7 +18,7 @@ public class EnderecoCliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "cliente_email")
+    @JoinColumn(name = "email_cliente")
     private Cliente cliente;
     @Column(name = "logradouro")
     private String logradouro;

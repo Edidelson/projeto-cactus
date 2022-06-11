@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "0b5ee86c-7ae5-464d-8776-ef94ad5c85e8",
+		"name": "Cadastrar e Consultar Endereco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17988198"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Endereco",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"logradouro\": \"Rua Manoel Henrique\",\r\n\"numero\": \"240\",\r\n\"bairro\": \"Jardim Primavera\",\r\n\"cidade\": \"Cambará\",\r\n\"estado\": \"PR\",\r\n\"cep\": \"8639000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/clientes/enderecos/carlos@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"enderecos",
+						"carlos@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Endereços do Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/clientes/enderecos/carlos@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"enderecos",
+						"carlos@gmail.com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
